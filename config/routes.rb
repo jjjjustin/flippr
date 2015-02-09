@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :users
+  resources :flips, only: [:create, :destroy]
   root   'static#home'
   get    'sessions/new'
   get    'users/new'

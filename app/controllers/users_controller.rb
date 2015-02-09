@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @flips = @user.flips
   end
 
   def index
@@ -37,6 +38,12 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+     User.find(params[:id]).destroy
+     flash[:success] = "User has been deleted"
+     redirect_to users_url
   end
 
 

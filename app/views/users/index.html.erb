@@ -6,6 +6,10 @@
     <li>
       <%= photo_for user %>
       <%= link_to user.user_name, user %>
+      <% if current_user?(user) %>
+    | <%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
     </li>
   <% end %>
 </ul>

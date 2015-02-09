@@ -1,13 +1,33 @@
-<% provide(:title, "Home") %>
-<div class="center jumbotron">
-  <h1>Welcome to Flippr</h1>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="flip_form">
+        <%= render 'shared/flip_form' %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3>Flip Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
 
-  <h2>
-    The first microblogging platform designed exclusively for pinnipeds and cetaceans
-  </h2>
 
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-</div>
+  <% provide(:title, "Home") %>
+  <div class="center jumbotron">
+    <h1>Welcome to Flippr</h1>
 
-<%= link_to image_tag("rails.png", alt: "Rails logo"),
-            'http://rubyonrails.org/' %>
+    <h2>
+      The first microblogging platform designed exclusively for pinnipeds and cetaceans
+    </h2>
+
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  </div>
+  <div class="col-md-8">
+      <h3>Flip Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+<% end %>
